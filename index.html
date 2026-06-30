@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LG GLT221 – Keyur Mobile &amp; Electronics</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow:  #FFC400;
+    --yellow2: #FFD740;
+    --dark:    #1E1E1E;
+    --mid:     #2E2E2E;
+    --card:    #2C2C2C;
+    --gray:    #646464;
+    --lgray:   #9A9A9A;
+    --bg:      #232323;
+    --white:   #FFFFFF;
+    --ice:     rgba(180,230,255,0.07);
+    --ice2:    rgba(180,230,255,0.13);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── PROMO BANNER ── */
+  .promo-banner {
+    background: linear-gradient(90deg, #1a1a1a 0%, #2a2200 50%, #1a1a1a 100%);
+    border-bottom: 1px solid rgba(255,196,0,0.25);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    color: var(--yellow2);
+    position: relative;
+    overflow: hidden;
+  }
+  .promo-banner::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,196,0,0.06), transparent);
+    animation: bannerShimmer 4s ease infinite;
+  }
+  @keyframes bannerShimmer {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(100%); }
+  }
+  .promo-banner span { color: var(--white); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left {
+    opacity: 0; transform: translateX(-28px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right {
+    opacity: 0; transform: translateX(28px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  /* ── HEADER ── */
+  .header {
+    background: rgba(20,20,20,0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 2px solid var(--yellow);
+    position: sticky;
+    top: 0; z-index: 100;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.55);
+  }
+  .header-inner {
+    display: flex; align-items: center; gap: 14px;
+    padding: 13px 20px;
+  }
+  .header-inner img {
+    width: 50px; height: 50px;
+    border-radius: 10px; object-fit: cover;
+    border: 1.5px solid rgba(255,196,0,0.3);
+  }
+  .brand-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px; font-weight: 800; line-height: 1.2;
+  }
+  .brand-name span { color: var(--yellow); }
+  .brand-sub {
+    font-size: 10px; color: var(--lgray);
+    letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: radial-gradient(ellipse at 70% 30%, rgba(255,196,0,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(100,200,255,0.04) 0%, transparent 50%),
+                linear-gradient(180deg, #1a1a1a 0%, #232323 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 70px 24px 90px;
+    position: relative; overflow: hidden;
+  }
+
+  /* Ice crystal background accents */
+  .hero-ice-1 {
+    position: absolute; top: 8%; right: -30px;
+    width: 200px; height: 200px;
+    border: 1px solid rgba(150,210,255,0.08);
+    border-radius: 30% 70% 60% 40% / 40% 30% 70% 60%;
+    animation: morphBlob 8s ease-in-out infinite;
+  }
+  .hero-ice-2 {
+    position: absolute; bottom: 12%; left: -40px;
+    width: 160px; height: 160px;
+    border: 1px solid rgba(255,196,0,0.07);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: morphBlob 10s ease-in-out infinite reverse;
+  }
+  @keyframes morphBlob {
+    0%,100% { border-radius: 30% 70% 60% 40% / 40% 30% 70% 60%; }
+    50%      { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,196,0,0.12);
+    border: 1px solid rgba(255,196,0,0.35);
+    color: var(--yellow); font-size: 10.5px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 7px 18px; border-radius: 50px;
+    margin-bottom: 26px;
+    animation: fadeDown 0.8s ease forwards;
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── FRIDGE SVG ILLUSTRATION ── */
+  .fridge-wrap {
+    width: 160px; height: 220px;
+    margin: 0 auto 28px;
+    position: relative;
+    animation: floatUp 0.9s ease 0.2s both;
+  }
+  @keyframes floatUp {
+    from { opacity: 0; transform: translateY(40px) scale(0.85); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* Cold ripple rings */
+  .cold-ring {
+    position: absolute;
+    border: 1.5px solid rgba(150,220,255,0.15);
+    border-radius: 50%;
+    animation: coldRipple 4s ease-out infinite;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .cold-ring:nth-child(1) { width: 170px; height: 170px; animation-delay: 0s; }
+  .cold-ring:nth-child(2) { width: 210px; height: 210px; animation-delay: 1.3s; }
+  .cold-ring:nth-child(3) { width: 250px; height: 250px; animation-delay: 2.6s; }
+  @keyframes coldRipple {
+    0%   { opacity: 0.5; transform: translate(-50%,-50%) scale(0.85); }
+    100% { opacity: 0;   transform: translate(-50%,-50%) scale(1.2); }
+  }
+
+  .fridge-body {
+    width: 120px; height: 210px;
+    background: linear-gradient(160deg, #2e2e2e, #1a1a1a);
+    border-radius: 16px 16px 12px 12px;
+    border: 1.5px solid rgba(255,196,0,0.25);
+    position: absolute; left: 20px; top: 5px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.04);
+    overflow: hidden;
+  }
+  /* freezer compartment top */
+  .fridge-freezer {
+    height: 68px;
+    background: linear-gradient(135deg, #252525, #1e1e1e);
+    border-bottom: 1.5px solid rgba(255,196,0,0.18);
+    position: relative; display: flex; align-items: center; justify-content: center;
+  }
+  .freezer-temp {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px; font-weight: 700;
+    color: rgba(150,220,255,0.7);
+    letter-spacing: 1px;
+  }
+  /* freezer snowflake */
+  .snowflake {
+    position: absolute; top: 8px; right: 10px;
+    font-size: 14px; opacity: 0.4;
+    animation: spin 12s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .fridge-lower {
+    height: 136px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* shelves */
+  .shelf {
+    position: absolute; left: 10px; right: 10px;
+    height: 1px; background: rgba(255,196,0,0.1);
+  }
+  .shelf:nth-child(1) { top: 35px; }
+  .shelf:nth-child(2) { top: 70px; }
+  .shelf:nth-child(3) { top: 105px; }
+
+  /* door handle */
+  .fridge-handle {
+    position: absolute; right: -4px; top: 50%;
+    transform: translateY(-50%);
+    width: 6px; height: 48px;
+    background: linear-gradient(180deg, rgba(255,196,0,0.6), rgba(255,196,0,0.3));
+    border-radius: 3px;
+    box-shadow: 0 0 8px rgba(255,196,0,0.2);
+  }
+
+  /* inner glow */
+  .fridge-glow {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(to top, rgba(100,200,255,0.03), transparent);
+    pointer-events: none;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 8vw, 44px);
+    font-weight: 800; line-height: 1.15; margin-bottom: 10px;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+  .hero h1 em { color: var(--yellow); font-style: normal; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .model-pill {
+    display: inline-block;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 11px; color: var(--lgray);
+    padding: 5px 14px; border-radius: 50px;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    margin: 8px 0 16px;
+    animation: fadeUp 0.8s ease 0.4s both;
+  }
+  .hero-desc {
+    font-size: 15.5px; color: rgba(255,255,255,0.65);
+    max-width: 340px; margin: 0 auto 22px; line-height: 1.7;
+    animation: fadeUp 0.8s ease 0.5s both;
+  }
+  .stars {
+    color: var(--yellow); font-size: 20px;
+    letter-spacing: 4px;
+    animation: fadeUp 0.8s ease 0.6s both;
+  }
+  .scroll-hint {
+    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: var(--lgray); font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase;
+    animation: bounce 2.2s ease infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(7px); }
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--yellow);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    position: relative; overflow: hidden;
+  }
+  .stats-bar::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: shimmer 3s ease infinite;
+  }
+  @keyframes shimmer {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(100%); }
+  }
+  .stat-item {
+    padding: 18px 6px; text-align: center;
+    border-right: 1px solid rgba(0,0,0,0.1);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800;
+    color: var(--dark); line-height: 1; margin-bottom: 3px;
+  }
+  .stat-label { font-size: 10px; color: rgba(0,0,0,0.5); text-transform: uppercase; letter-spacing: 0.4px; line-height: 1.3; }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 48px 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .section-eyebrow {
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 2.5px; color: var(--yellow);
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-eyebrow::after {
+    content: ''; flex: 1; height: 1px;
+    background: rgba(255,196,0,0.2);
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif; font-size: 23px;
+    font-weight: 800; margin-bottom: 24px; line-height: 1.2;
+  }
+
+  /* ── GLASS FEATURE CARDS ── */
+  .features-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 11px;
+  }
+  .feat-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+    border: 1px solid rgba(255,196,0,0.14);
+    border-radius: 20px; padding: 20px 16px;
+    backdrop-filter: blur(4px);
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
+                border-color 0.3s, box-shadow 0.3s;
+    cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .feat-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,196,0,0.2), transparent);
+  }
+  .feat-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(255,196,0,0.45);
+    box-shadow: 0 12px 32px rgba(255,196,0,0.1), 0 0 0 1px rgba(255,196,0,0.1);
+  }
+  .feat-card.wide { grid-column: 1 / -1; }
+  .feat-icon {
+    font-size: 30px; margin-bottom: 10px; display: block;
+    transition: transform 0.3s;
+  }
+  .feat-card:hover .feat-icon { transform: scale(1.2) rotate(-5deg); }
+  .feat-title {
+    font-family: 'Syne', sans-serif; font-size: 11.5px; font-weight: 700;
+    color: var(--yellow); margin-bottom: 6px;
+    text-transform: uppercase; letter-spacing: 0.6px;
+  }
+  .feat-desc { font-size: 12.5px; color: rgba(255,255,255,0.62); line-height: 1.6; }
+
+  /* ── WHY BUY ── */
+  .why-list { list-style: none; }
+  .why-item {
+    display: flex; gap: 16px; padding: 18px 0 18px 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    align-items: flex-start;
+    transition: background 0.25s; border-radius: 12px;
+  }
+  .why-item:hover { background: rgba(255,196,0,0.04); }
+  .why-item:last-child { border-bottom: none; }
+  .why-num {
+    font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800;
+    color: transparent; -webkit-text-stroke: 1.5px var(--yellow);
+    min-width: 40px; line-height: 1;
+    transition: color 0.25s, -webkit-text-stroke 0.25s;
+  }
+  .why-item:hover .why-num { color: var(--yellow); -webkit-text-stroke: 0px; }
+  .why-text strong { display: block; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .why-text span { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.55; }
+
+  /* ── PROG PILLS ── */
+  .programs-scroll { display: flex; flex-wrap: wrap; gap: 9px; }
+  .prog-pill {
+    background: rgba(255,196,0,0.08);
+    border: 1px solid rgba(255,196,0,0.25);
+    border-radius: 50px; padding: 7px 15px;
+    font-size: 12px; color: var(--yellow2); font-weight: 500;
+    transition: background 0.2s, transform 0.2s; white-space: nowrap; cursor: default;
+  }
+  .prog-pill:hover { background: var(--yellow); color: var(--dark); transform: scale(1.06); border-color: var(--yellow); }
+
+  /* ── BIG STATS ── */
+  .big-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+  .big-stat {
+    background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border-radius: 18px; padding: 22px 14px; text-align: center;
+    border: 1px solid rgba(255,196,0,0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .big-stat::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,196,0,0.18), transparent);
+  }
+  .big-stat:hover { border-color: var(--yellow); box-shadow: 0 8px 24px rgba(255,196,0,0.1); }
+  .big-stat-num {
+    font-family: 'Syne', sans-serif; font-size: 34px; font-weight: 800;
+    color: var(--yellow); line-height: 1; margin-bottom: 6px;
+  }
+  .big-stat-label { font-size: 12px; color: var(--lgray); line-height: 1.4; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* ── SPECS TABLE ── */
+  .specs-table { width: 100%; border-collapse: collapse; }
+  .specs-table tr { transition: background 0.2s; }
+  .specs-table tr:hover td { background: rgba(255,196,0,0.05) !important; }
+  .specs-table tr:nth-child(even) td { background: rgba(255,255,255,0.025); }
+  .specs-table td {
+    padding: 12px 10px; font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top;
+  }
+  .specs-table td:first-child {
+    color: var(--lgray); width: 44%;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px;
+  }
+  .specs-table td:last-child { color: var(--white); font-weight: 500; }
+
+  /* ── TICKER ── */
+  .ticker-wrap {
+    background: var(--yellow); overflow: hidden; padding: 11px 0; white-space: nowrap;
+  }
+  .ticker { display: inline-flex; animation: ticker 22s linear infinite; gap: 0; }
+  .ticker-item {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'Syne', sans-serif; font-size: 12.5px; font-weight: 700;
+    color: var(--dark); padding: 0 30px; text-transform: uppercase; letter-spacing: 1px;
+  }
+  .ticker-dot { width: 5px; height: 5px; background: var(--dark); border-radius: 50%; opacity: 0.35; flex-shrink: 0; }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── WARRANTY ── */
+  .warranty-card {
+    background: linear-gradient(135deg, #272727, #1e1e1e);
+    border: 2px solid var(--yellow); border-radius: 22px;
+    padding: 30px 22px; text-align: center;
+    margin: 0 20px 24px; position: relative; overflow: hidden;
+  }
+  .warranty-card::before {
+    content: ''; position: absolute;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,196,0,0.07), transparent);
+    top: -60px; right: -60px; border-radius: 50%;
+  }
+  .warranty-card .w-icon { font-size: 42px; margin-bottom: 14px; display: block; }
+  .warranty-card h3 {
+    font-family: 'Syne', sans-serif; font-size: 20px;
+    color: var(--yellow); margin-bottom: 10px;
+  }
+  .warranty-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 16px; }
+  .w-badge {
+    background: rgba(255,196,0,0.1); border: 1px solid rgba(255,196,0,0.28);
+    border-radius: 12px; padding: 13px 8px;
+  }
+  .w-badge-num {
+    font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800;
+    color: var(--yellow); line-height: 1;
+  }
+  .w-badge-label { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; line-height: 1.35; }
+
+  /* ── CTA ── */
+  .promoter-cta {
+    background: var(--yellow); margin: 22px; border-radius: 22px;
+    padding: 32px 22px; text-align: center; position: relative; overflow: hidden;
+  }
+  .promoter-cta::before {
+    content: '❄️'; position: absolute; font-size: 110px;
+    opacity: 0.08; bottom: -20px; right: -10px;
+  }
+  .promoter-cta h3 {
+    font-family: 'Syne', sans-serif; font-size: 21px;
+    font-weight: 800; color: var(--dark); margin-bottom: 10px;
+  }
+  .promoter-cta p {
+    font-size: 14px; color: rgba(0,0,0,0.65); line-height: 1.6;
+    margin-bottom: 22px; max-width: 320px; margin-left: auto; margin-right: auto;
+  }
+  .cta-btn {
+    display: inline-block; background: var(--dark); color: var(--yellow);
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14.5px;
+    padding: 14px 30px; border-radius: 50px; text-decoration: none;
+    letter-spacing: 0.5px; box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.4); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); border-top: 3px solid var(--yellow);
+    padding: 28px 22px; text-align: center;
+    color: var(--lgray); font-size: 12px; line-height: 1.8;
+  }
+  .footer-logo {
+    display: flex; align-items: center; justify-content: center;
+    gap: 12px; margin-bottom: 14px;
+  }
+  .footer-logo img { width: 42px; height: 42px; border-radius: 9px; object-fit: cover; }
+  .footer-logo span { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); }
+  .footer-logo span b { color: var(--yellow); }
+
+  /* ── PARTICLES ── */
+  .particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .particle {
+    position: absolute; border-radius: 50%; opacity: 0;
+    animation: floatParticle var(--dur,6s) ease-in-out var(--delay,0s) infinite;
+  }
+  @keyframes floatParticle {
+    0%   { opacity: 0; transform: translateY(100%) translateX(0); }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.25; }
+    100% { opacity: 0; transform: translateY(-200px) translateX(var(--drift,20px)); }
+  }
+</style>
+</head>
+<body>
+
+<!-- PROMO BANNER -->
+<div class="promo-banner">
+  ❄️ <span>India's Most Trusted Refrigerator Brand</span> — LG keeps your food fresher, longer, every single day. 🌟
+</div>
+
+<!-- STICKY HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <img src="data:image/jpeg;base64,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" alt="KM Logo">
+    <div>
+      <div class="brand-name">Keyur Mobile <span>&amp; Electronics</span></div>
+      <div class="brand-sub">Your Trusted Electronics Partner</div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="particles" id="particles"></div>
+  <div class="hero-ice-1"></div>
+  <div class="hero-ice-2"></div>
+
+  <div class="hero-badge">❄️ &nbsp; LG Refrigerator · 2026 Edition</div>
+
+  <!-- Fridge Illustration -->
+  <div class="fridge-wrap">
+    <div class="cold-ring"></div>
+    <div class="cold-ring"></div>
+    <div class="cold-ring"></div>
+    <div class="fridge-body">
+      <div class="fridge-freezer">
+        <div class="freezer-temp">-18°C</div>
+        <div class="snowflake">❄</div>
+        <div class="fridge-handle"></div>
+      </div>
+      <div class="fridge-lower">
+        <div class="shelf"></div>
+        <div class="shelf"></div>
+        <div class="shelf"></div>
+        <div class="fridge-handle"></div>
+        <div class="fridge-glow"></div>
+      </div>
+    </div>
+  </div>
+
+  <h1>Chill Smarter.<br><em>Stay Fresh Longer. 🧊</em></h1>
+  <div class="model-pill">LG GLT221 / 2026</div>
+  <p class="hero-desc">215 litres of intelligent cooling with LG's Smart Inverter Compressor — trusted by millions of Indian families.</p>
+  <div class="stars">★★★★★</div>
+
+  <div class="scroll-hint">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M6 12l4 4 4-4" stroke="#FFC400" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- QUICK STATS -->
+<div class="stats-bar reveal">
+  <div class="stat-item">
+    <div class="stat-num">215 L</div>
+    <div class="stat-label">Capacity</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">5 ★</div>
+    <div class="stat-label">Energy Rating</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">3–4</div>
+    <div class="stat-label">Members</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">10 Yr</div>
+    <div class="stat-label">Compressor</div>
+  </div>
+</div>
+
+<!-- IMPACT NUMBERS -->
+<div class="section">
+  <p class="section-eyebrow">Performance at a Glance</p>
+  <h2 class="section-title reveal">Numbers That Matter 📊</h2>
+  <div class="big-stats">
+    <div class="big-stat reveal"><div class="big-stat-num">215</div><div class="big-stat-label">Litres<br>Total Capacity</div></div>
+    <div class="big-stat reveal"><div class="big-stat-num">5★</div><div class="big-stat-label">BEE Energy<br>Star Rating</div></div>
+    <div class="big-stat reveal"><div class="big-stat-num">10<small style="font-size:16px">yr</small></div><div class="big-stat-label">Compressor<br>Warranty</div></div>
+    <div class="big-stat reveal"><div class="big-stat-num">-18°</div><div class="big-stat-label">Freezer Temp<br>Performance</div></div>
+  </div>
+</div>
+
+<!-- KEY FEATURES -->
+<div class="section">
+  <p class="section-eyebrow">What Sets It Apart</p>
+  <h2 class="section-title reveal">Features You'll Love ❄️</h2>
+  <div class="features-grid">
+    <div class="feat-card wide reveal">
+      <span class="feat-icon">⚙️</span>
+      <div class="feat-title">Smart Inverter Compressor</div>
+      <div class="feat-desc">LG's inverter technology automatically adjusts compressor speed based on cooling load — saving electricity, reducing noise, and lasting years longer than conventional compressors. It's the heart of this fridge!</div>
+    </div>
+    <div class="feat-card reveal-left">
+      <span class="feat-icon">💧</span>
+      <div class="feat-title">Moist Balance Crisper</div>
+      <div class="feat-desc">Keeps vegetables and fruits fresh up to 2× longer with a humidity-controlled drawer. Freshness, locked in.</div>
+    </div>
+    <div class="feat-card reveal-right">
+      <span class="feat-icon">🌬️</span>
+      <div class="feat-title">Multi-Air Flow</div>
+      <div class="feat-desc">Cool air spreads evenly to every corner — no warm spots, no dry patches. Every shelf gets the same treatment.</div>
+    </div>
+    <div class="feat-card reveal-left">
+      <span class="feat-icon">🔋</span>
+      <div class="feat-title">Smart Diagnosis™</div>
+      <div class="feat-desc">LG's built-in self-diagnosis detects issues instantly. Service made faster, hassle-free. Your fridge talks to the technician!</div>
+    </div>
+    <div class="feat-card reveal-right">
+      <span class="feat-icon">🔇</span>
+      <div class="feat-title">Whisper-Quiet Operation</div>
+      <div class="feat-desc">Barely audible at just 35 dB — quieter than a library. Perfect for open-plan homes and small apartments.</div>
+    </div>
+    <div class="feat-card reveal-left">
+      <span class="feat-icon">💪</span>
+      <div class="feat-title">Tempered Glass Shelves</div>
+      <div class="feat-desc">Strong, safe, easy-to-clean shelves that hold heavy loads without bending. Spills wipe off in seconds.</div>
+    </div>
+    <div class="feat-card reveal-right">
+      <span class="feat-icon">🌡️</span>
+      <div class="feat-title">Auto Defrost</div>
+      <div class="feat-desc">No manual defrosting ever. The system keeps the freezer frost-free automatically. One less chore for you.</div>
+    </div>
+    <div class="feat-card reveal-left">
+      <span class="feat-icon">🚪</span>
+      <div class="feat-title">Reversible Door Hinge</div>
+      <div class="feat-desc">Fits any kitchen layout — simply swap the hinge to open left or right. Maximum flexibility, zero compromise.</div>
+    </div>
+    <div class="feat-card reveal-right">
+      <span class="feat-icon">🥚</span>
+      <div class="feat-title">Egg Tray + Door Bins</div>
+      <div class="feat-desc">Dedicated egg tray, large door bins for bottles, and adjustable shelves. Every item has its perfect spot.</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY BUY -->
+<div class="section">
+  <p class="section-eyebrow">Promoter Talking Points</p>
+  <h2 class="section-title reveal">Why LG GLT221 Wins 🏆</h2>
+  <ul class="why-list">
+    <li class="why-item reveal"><div class="why-num">01</div><div class="why-text"><strong>Trusted by Millions of Families</strong><span>LG is India's #1 refrigerator brand — and for good reason. Reliability you can count on.</span></div></li>
+    <li class="why-item reveal"><div class="why-num">02</div><div class="why-text"><strong>Massive Energy Savings</strong><span>5-Star BEE rating means significantly lower electricity bills every month. Smart choice for every home.</span></div></li>
+    <li class="why-item reveal"><div class="why-num">03</div><div class="why-text"><strong>Food Stays Fresh Longer</strong><span>Multi Air Flow + Moist Balance Crisper = longer freshness for fruits, vegetables and leftovers.</span></div></li>
+    <li class="why-item reveal"><div class="why-num">04</div><div class="why-text"><strong>215 L — Right Fit for 3–4 Members</strong><span>Not too small, not too big. Ideal family size that fits in any standard Indian kitchen.</span></div></li>
+    <li class="why-item reveal"><div class="why-num">05</div><div class="why-text"><strong>10-Year Compressor Warranty</strong><span>A full decade of protection on the most critical part. That's confidence from LG itself.</span></div></li>
+    <li class="why-item reveal"><div class="why-num">06</div><div class="why-text"><strong>Smart Diagnosis Saves Service Hassle</strong><span>Self-diagnosis tech means faster, cheaper service. Less downtime, more convenience.</span></div></li>
+    <li class="why-item reveal"><div class="why-num">07</div><div class="why-text"><strong>Stylish Shiny Steel Finish</strong><span>Sleek look that elevates any kitchen. Steel finish resists fingerprints and looks premium every day.</span></div></li>
+  </ul>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item"><span class="ticker-dot"></span> 5 Star Energy Rating</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> 215 L Capacity</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Smart Inverter Compressor</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> 10 Year Compressor Warranty</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Multi Air Flow Cooling</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Moist Balance Crisper</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Auto Defrost</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> LG Smart Diagnosis</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item"><span class="ticker-dot"></span> 5 Star Energy Rating</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> 215 L Capacity</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Smart Inverter Compressor</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> 10 Year Compressor Warranty</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Multi Air Flow Cooling</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Moist Balance Crisper</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Auto Defrost</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> LG Smart Diagnosis</span>
+  </div>
+</div>
+
+<!-- FULL SPECS -->
+<div class="section">
+  <p class="section-eyebrow">Technical Details</p>
+  <h2 class="section-title reveal">Full Specifications 📋</h2>
+  <table class="specs-table reveal">
+    <tr><td>Model</td><td>LG GLT221RPZY / 2026</td></tr>
+    <tr><td>Type</td><td>Direct Cool Double Door</td></tr>
+    <tr><td>Gross Capacity</td><td>215 Litres</td></tr>
+    <tr><td>Net Refrigerator</td><td>178 Litres</td></tr>
+    <tr><td>Net Freezer</td><td>37 Litres</td></tr>
+    <tr><td>Energy Rating</td><td>5 Star (BEE 2025)</td></tr>
+    <tr><td>Compressor</td><td>Smart Inverter Compressor</td></tr>
+    <tr><td>Cooling Type</td><td>Multi Air Flow</td></tr>
+    <tr><td>Crisper</td><td>Moist Balance Crisper</td></tr>
+    <tr><td>Auto Defrost</td><td>Yes</td></tr>
+    <tr><td>Smart Diagnosis</td><td>Yes</td></tr>
+    <tr><td>Door Finish</td><td>Shiny Steel</td></tr>
+    <tr><td>Reversible Door</td><td>Yes</td></tr>
+    <tr><td>Shelves</td><td>Tempered Glass</td></tr>
+    <tr><td>Stabilizer Required</td><td>Not Required (150–290 V)</td></tr>
+    <tr><td>Annual Energy Use</td><td>178 kWh/year (approx.)</td></tr>
+    <tr><td>Dimensions (W×D×H)</td><td>535 × 600 × 1340 mm</td></tr>
+    <tr><td>Net Weight</td><td>47 kg</td></tr>
+    <tr><td>Voltage / Frequency</td><td>230 V / 50 Hz</td></tr>
+    <tr><td>In the Box</td><td>Refrigerator, Ice Tray × 2, Vegetable Box, User Manual, Warranty Card</td></tr>
+  </table>
+</div>
+
+<!-- WARRANTY -->
+<div class="warranty-card reveal" style="margin-top:28px;">
+  <span class="w-icon">🛡️</span>
+  <h3>LG's Solid Warranty Backing</h3>
+  <p style="color:rgba(255,255,255,0.55); font-size:14px; line-height:1.6;">LG stands behind every fridge — with some of the best warranty coverage in the industry.</p>
+  <div class="warranty-grid">
+    <div class="w-badge">
+      <div class="w-badge-num">1</div>
+      <div class="w-badge-label">Year on<br>Product</div>
+    </div>
+    <div class="w-badge">
+      <div class="w-badge-num">1</div>
+      <div class="w-badge-label">Year on<br>Parts</div>
+    </div>
+    <div class="w-badge">
+      <div class="w-badge-num">10</div>
+      <div class="w-badge-label">Years on<br>Compressor</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="promoter-cta reveal">
+  <h3>Ready to Close the Deal? 🤝</h3>
+  <p>LG GLT221 — perfect size, perfect savings, perfect cooling. 10-year compressor warranty seals the trust. Your customer will thank you for this one.</p>
+  <a href="#" class="cta-btn">Ask Us for the Best Price →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="data:image/jpeg;base64,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" alt="KM Logo">
+    <span>Keyur Mobile <b>&amp; Electronics</b></span>
+  </div>
+  LG GLT221 · 2026 Edition<br>
+  Specifications subject to change. Refer to product box for final details.
+</footer>
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+  // ── Floating particles (ice-blue + gold mix) ──
+  const container = document.getElementById('particles');
+  const colors = ['#FFC400', 'rgba(150,220,255,0.8)', 'rgba(200,240,255,0.6)'];
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const c = colors[Math.floor(Math.random() * colors.length)];
+    p.style.cssText = `
+      left: ${Math.random() * 100}%;
+      bottom: ${Math.random() * 20}%;
+      --dur: ${4 + Math.random() * 5}s;
+      --delay: ${Math.random() * 6}s;
+      --drift: ${(Math.random() - 0.5) * 60}px;
+      width: ${2 + Math.random() * 3}px;
+      height: ${2 + Math.random() * 3}px;
+      background: ${c};
+      opacity: 0;
+    `;
+    container.appendChild(p);
+  }
+
+  // ── Staggered feature cards ──
+  document.querySelectorAll('.feat-card').forEach((card, i) => {
+    card.style.transitionDelay = (i * 0.05) + 's';
+  });
+</script>
+</body>
+</html>
